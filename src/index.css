@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #F6F5F1;
+  --bg-surface: #ECEAE4;
+  --border-hairline: #D8D6CE;
+  --ink-primary: #141413;
+  --ink-secondary: #5C5B57;
+  --accent-klein: #002FA7;
+  --accent-klein-hover: #00237D;
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent-klein);
+    color: #F6F5F1;
+  }
+}
+
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-mono-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Kinetic masked baseline reveal */
+.reveal-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.reveal-line {
+  display: block;
+  transform: translateY(108%);
+  opacity: 0;
+  animation: maskBaselineReveal 900ms var(--ease-editorial) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+@keyframes maskBaselineReveal {
+  0% {
+    transform: translateY(108%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Scroll-triggered editorial fade-rise */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 720ms var(--ease-editorial),
+    transform 720ms var(--ease-editorial);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle breathing availability indicator */
+@keyframes subtleBreath {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.38;
+    transform: scale(0.84);
+  }
+}
+
+.availability-breath {
+  animation: subtleBreath 2.8s ease-in-out infinite;
+}
+
+/* Editorial underline hover transition */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 280ms var(--ease-editorial);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-line {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .availability-breath {
+    animation: none;
+  }
+}
