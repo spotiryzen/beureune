@@ -10,6 +10,7 @@ import {
 import { FloatingPreview, type ActivePreview } from './components/FloatingPreview';
 import { MagneticButton } from './components/MagneticButton';
 import { CaseStudyModal } from './components/CaseStudyModal';
+import { N8nChatWidget } from './components/N8nChatWidget';
 
 function formatBandaAcehTime(date: Date): string {
   return new Intl.DateTimeFormat('en-GB', {
@@ -455,11 +456,14 @@ export default function App() {
         onSelectProject={handleCycleProject}
       />
 
+      {/* Widget Chatbot Webhook n8n */}
+      <N8nChatWidget />
+
       {/* Clipboard Confirmation Toast */}
       <div
         role="status"
         aria-live="polite"
-        className={`pointer-events-none fixed right-6 bottom-6 z-50 border border-[#002FA7] bg-[#141413] px-4 py-2.5 font-mono-meta text-xs text-[#F6F5F1] shadow-[0_12px_32px_rgba(20,20,19,0.2)] transition-all duration-200 ${
+        className={`pointer-events-none fixed right-5 bottom-20 z-50 border border-[#002FA7] bg-[#141413] px-4 py-2.5 font-mono-meta text-xs text-[#F6F5F1] shadow-[0_12px_32px_rgba(20,20,19,0.2)] transition-all duration-200 sm:right-8 sm:bottom-24 ${
           copiedEmail
             ? 'translate-y-0 opacity-100'
             : 'translate-y-2 opacity-0'

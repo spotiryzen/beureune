@@ -66,7 +66,7 @@ export function CaseStudyModal({
             type="button"
             onClick={onClose}
             aria-label="Tutup studi kasus"
-            className="inline-flex h-11 w-11 items-center justify-center text-[#141413] transition-colors hover:bg-[#ECEAE4] hover:text-[#002FA7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
+            className="inline-flex h-11 w-11 cursor-pointer items-center justify-center text-[#141413] transition-colors hover:bg-[#ECEAE4] hover:text-[#002FA7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -106,7 +106,9 @@ export function CaseStudyModal({
             </div>
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#D8D6CE] px-4 py-2.5 text-xs text-[#5C5B57]">
               <span>{project.caption}</span>
-              <span className="font-mono-meta text-[#141413]">{project.metrics}</span>
+              <span className="font-mono-meta text-[#141413]">
+                {project.metrics}
+              </span>
             </div>
           </div>
 
@@ -141,7 +143,9 @@ export function CaseStudyModal({
           {/* Perangkat & Sistem — Quiet Unboxed Text */}
           <div className="mt-9 flex flex-wrap items-baseline justify-between gap-4 border-t border-[#D8D6CE] pt-6">
             <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-[#5C5B57]">
-              <span className="font-mono-meta text-[#141413]">Perangkat &amp; Sistem:</span>
+              <span className="font-mono-meta text-[#141413]">
+                Perangkat &amp; Sistem:
+              </span>
               {project.stack.map((item, idx) => (
                 <span key={item} className="inline-flex items-center gap-2.5">
                   <span>{item}</span>
@@ -158,7 +162,7 @@ export function CaseStudyModal({
               <button
                 type="button"
                 onClick={() => onSelectProject('prev')}
-                className="inline-flex min-h-[40px] items-center gap-2 border border-[#D8D6CE] px-3.5 py-2 text-xs font-medium text-[#141413] transition-colors hover:border-[#141413] hover:bg-[#ECEAE4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
+                className="inline-flex min-h-[40px] cursor-pointer items-center gap-2 border border-[#D8D6CE] px-3.5 py-2 text-xs font-medium text-[#141413] transition-colors hover:border-[#141413] hover:bg-[#ECEAE4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
               >
                 <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>Sebelumnya</span>
@@ -166,7 +170,7 @@ export function CaseStudyModal({
               <button
                 type="button"
                 onClick={() => onSelectProject('next')}
-                className="inline-flex min-h-[40px] items-center gap-2 border border-[#D8D6CE] px-3.5 py-2 text-xs font-medium text-[#141413] transition-colors hover:border-[#141413] hover:bg-[#ECEAE4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
+                className="inline-flex min-h-[40px] cursor-pointer items-center gap-2 border border-[#D8D6CE] px-3.5 py-2 text-xs font-medium text-[#141413] transition-colors hover:border-[#141413] hover:bg-[#ECEAE4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002FA7]"
               >
                 <span>Berikutnya</span>
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
